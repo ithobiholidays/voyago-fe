@@ -215,7 +215,7 @@ const Navbar: React.FC = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center flex-shrink-0">
               <Image
-                src="/Logo/Logo_Voyago.png"
+                src="/Logo/Logo Voyago.png"
                 alt="Voyago Logo"
                 width={140}
                 height={40}
@@ -433,7 +433,7 @@ const Navbar: React.FC = () => {
           {/* Center: Logo */}
           <Link href="/" className="absolute left-1/2 -translate-x-1/2">
             <Image
-              src="/Logo/Logo_Voyago.png"
+              src="/Logo/Logo Voyago.png"
               alt="Voyago Logo"
               width={100}
               height={30}
