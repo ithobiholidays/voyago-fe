@@ -527,7 +527,7 @@
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">
-                        Top 10 Destinations
+                        Top 10 Best Deals
                       </h3>
                       <div className="grid grid-cols-5 gap-4">
                         {topDestinations.map((dest) => (
