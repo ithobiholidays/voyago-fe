@@ -5,6 +5,7 @@
   import Image from 'next/image';
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
   import {
+    faPercent,
     faCartShopping,
     faGlobe,
     faUser,
@@ -38,6 +39,13 @@
     code: string;
     symbol: string;
     name: string;
+  }
+  
+  interface BestDeals{
+    id: number;
+    name: string;
+    country: string;
+    image: string;
   }
 
   interface Destination {
@@ -96,6 +104,19 @@
       { code: 'IDR', symbol: 'Rp', name: 'Indonesian Rupiah' },
       { code: 'JPY', symbol: '¥', name: 'Japanese Yen' },
       { code: 'SGD', symbol: 'S$', name: 'Singapore Dollar' },
+    ];
+
+    const bestDeals: BestDeals[] = [
+      { id: 1, name: 'Tokyo', country: 'Japan', image: '/destinations/tokyo.jpg' },
+      { id: 2, name: 'Paris', country: 'France', image: '/destinations/paris.jpg' },
+      { id: 3, name: 'New York', country: 'USA', image: '/destinations/newyork.jpg' },
+      { id: 4, name: 'London', country: 'UK', image: '/destinations/london.jpg' },
+      { id: 5, name: 'Dubai', country: 'UAE', image: '/destinations/dubai.jpg' },
+      { id: 6, name: 'Singapore', country: 'Singapore', image: '/destinations/singapore.jpg' },
+      { id: 7, name: 'Hong Kong', country: 'China', image: '/destinations/hongkong.jpg' },
+      { id: 8, name: 'Bali', country: 'Indonesia', image: '/destinations/bali.jpg' },
+      { id: 9, name: 'Barcelona', country: 'Spain', image: '/destinations/barcelona.jpg' },
+      { id: 10, name: 'Rome', country: 'Italy', image: '/destinations/rome.jpg' },
     ];
 
     const topDestinations: Destination[] = [
@@ -478,6 +499,60 @@
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-center space-x-8 h-14">
               
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveMenu('bestdeals')}
+                onMouseLeave={() => setActiveMenu(null)}
+              >
+                <button className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-[#06336e] py-4 transition-colors border-b-2 border-transparent hover:border-[#f68712]">
+                  <FontAwesomeIcon icon={faPercent} className="w-4 h-4" />
+                  <span>Best Deals</span>
+                  <FontAwesomeIcon icon={faChevronDown} className="w-3 h-3" />
+                </button>
+
+                {activeMenu === 'bestdeals' && (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[800px] bg-white rounded-b-2xl shadow-2xl border border-gray-100 p-6 z-50">
+                    <div className="mb-6">
+                      <div className="relative">
+                        <FontAwesomeIcon
+                          icon={faMagnifyingGlass}
+                          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Discover your next dream destination..."
+                          className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#06336e] text-sm"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">
+                        Top 10 Destinations
+                      </h3>
+                      <div className="grid grid-cols-5 gap-4">
+                        {topDestinations.map((dest) => (
+                          <Link
+                            key={dest.id}
+                            href={`/destination/${dest.name.toLowerCase()}`}
+                            className="group text-center"
+                          >
+                            <div className="w-full aspect-square rounded-full overflow-hidden mb-2 ring-2 ring-gray-100 group-hover:ring-[#f68712] transition-all">
+                              <div className="w-full h-full bg-gradient-to-br from-[#06336e] to-[#04274d] flex items-center justify-center">
+                                <span className="text-white text-xs font-medium">{dest.name}</span>
+                              </div>
+                            </div>
+                            <p className="text-xs font-medium text-gray-700 group-hover:text-[#06336e]">
+                              {dest.name}
+                            </p>
+                            <p className="text-xs text-gray-500">{dest.country}</p>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
               {/* Popular Destination */}
               <div
                 className="relative"
