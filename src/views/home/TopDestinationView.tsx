@@ -91,7 +91,7 @@ const TopDestinationView: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-white">
+    <section className="py-16 sm:py-20 md:py-24 lg:py-5 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}

@@ -136,7 +136,7 @@ export default function BestDealsView() {
   };
 
   return (
-    <section className="pt-16 sm:pt-20 md:pt-24 lg:pt-28 bg-white">
+    <section className="pt-16 sm:pt-20 md:pt-24 lg:pt-5 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

@@ -120,13 +120,13 @@ const WhyView: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="pt-16 sm:pt-20 md:pt-24 lg:pt-28 bg-white"
+      className="pt-16 sm:pt-20 md:pt-24 lg:pt-5 bg-white"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Title with Subtitle */}
         <div 
-          className={`text-center mb-16 md:mb-20 transition-all duration-700 ${
+          className={`text-center mb-16 md:mb-5 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
