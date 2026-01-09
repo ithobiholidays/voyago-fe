@@ -219,7 +219,7 @@ const Navbar: React.FC = () => {
                 alt="Voyago Logo"
                 width={140}
                 height={40}
-                className="h-12 w-auto"
+                className="h-30 w-auto"
                 priority
               />
             </Link>
@@ -437,7 +437,7 @@ const Navbar: React.FC = () => {
               alt="Voyago Logo"
               width={100}
               height={30}
-              className="h-7 w-auto"
+              className="h-30 w-auto"
               priority
             />
           </Link>
