@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
-  faTwitter,
   faInstagram,
   faYoutube,
   faTiktok,
@@ -14,7 +13,6 @@ import {
 const FooterComp: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  // Footer Sections - 4 Columns
   const aboutVoyago = [
     { label: 'About Us', href: '/comingsoon' },
     { label: 'Contact Us', href: '/comingsoon' },
@@ -41,15 +39,6 @@ const FooterComp: React.FC = () => {
     { label: 'Lorem Ipsum', href: '/comingsoon' },
   ];
 
-  const paymentInformation = [
-    { label: 'Lorem Ipsum', href: '/comingsoon' },
-    { label: 'Lorem Ipsum', href: '/comingsoon' },
-    { label: 'Lorem Ipsum', href: '/comingsoon' },
-    { label: 'Lorem Ipsum', href: '/comingsoon' },
-    { label: 'Lorem Ipsum', href: '/comingsoon' },
-    { label: 'Lorem Ipsum', href: '/comingsoon' },
-  ];
-
   const socialLinks = [
     { icon: faFacebook, href: 'https://facebook.com', label: 'Facebook' },
     { icon: faInstagram, href: 'https://instagram.com', label: 'Instagram' },
@@ -58,163 +47,147 @@ const FooterComp: React.FC = () => {
   ];
 
   const paymentLogos = [
-    { name: 'Lorem Ipsum', logo: '/payments/visa.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/mastercard.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/amex.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/jcb.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/unionpay.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/discover.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/diners.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/applepay.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/googlepay.svg' },
-    { name: 'Lorem Ipsum', logo: '/payments/paypal.svg' },
+    'Visa', 'Master', 'Amex', 'JCB', 'Union',
+    'PayPal', 'Apple', 'Google', 'Discover', 'Diners'
   ];
 
   return (
-    <footer className="bg-[#06336e]">
-      {/* Banner Section - "Information available on apps is coming soon" */}
-      <div className="bg-[#04274d] border-y border-white/10">
-        <div className="container text-center mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
-              <h3 className="text-white font-bold text-lg md:text-xl mb-1">
-                Coming Soon 
-              </h3>
-              <p className="text-white/70 text-sm">
-                Information available on apps is coming soon
-              </p>
-        </div>
-      </div>
-
-      {/* Main Footer Content - 4 Columns */}
-      <div className="border-t border-white/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            
-            {/* About Voyago */}
-            <div>
-              <h3 className="font-bold text-white text-base mb-4">
-                About Voyago
-              </h3>
-              <ul className="space-y-2.5">
-                {aboutVoyago.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-[#f68712] text-sm transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Partnerships */}
-            <div>
-              <h3 className="font-bold text-white text-base mb-4">
-                Partnerships
-              </h3>
-              <ul className="space-y-2.5">
-                {partnerships.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-[#f68712] text-sm transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Other Services */}
-            <div>
-              <h3 className="font-bold text-white text-base mb-4">
-                Other Services
-              </h3>
-              <ul className="space-y-2.5">
-                {otherServices.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-[#f68712] text-sm transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Payment Information */}
-            <div>
-              <h3 className="font-bold text-white text-base mb-4">
-                Payment Information
-              </h3>
-              <ul className="space-y-2.5">
-                {paymentInformation.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-[#f68712] text-sm transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Payment Channels Section */}
-          <div className="mt-12 pt-8 border-t border-white/10">
-            <h3 className="font-bold text-white text-base mb-6">
-              Payment Channels
+    <footer className="bg-[#2C3892]">
+      
+      {/* Coming Soon Banner */}
+      <div className="bg-[#F68712]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="text-center">
+            <h3 className="text-white font-bold text-base md:text-lg">
+              Coming Soon
             </h3>
-            <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
-              {paymentLogos.map((payment, index) => (
-                <div
-                  key={index}
-                  className="w-full aspect-[3/2] bg-white/5 rounded-lg border border-white/10 flex items-center justify-center hover:border-[#f68712] hover:bg-white/10 transition-all duration-300 p-2"
-                  title={payment.name}
-                >
-                  <span className="text-[9px] text-white/60 font-medium text-center">
-                    {payment.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <p className="text-white/90 text-xs md:text-sm">
+              Information available on apps is coming soon
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Bottom Footer - Copyright & Social Media */}
-      <div className="border-t border-white/10 bg-[#04274d]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            
-            {/* Logo & Copyright */}
-            <div className="flex flex-col md:flex-row items-center gap-4">
-              <p className="text-white/60 text-sm text-center md:text-left">
-                © {currentYear} Voyago. All rights reserved.
-              </p>
-            </div>
+      {/* Main Footer */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+        
+        {/* Logo Section - Centered & Compact */}
+        <div className="text-center mb-8">
+          <Link href="/" className="inline-block">
+            <Image 
+              src="/Logo/Logo Voyago.png" 
+              alt="Voyago Logo" 
+              width={140} 
+              height={42} 
+              className="h-10 w-auto brightness-0 invert"
+            />
+          </Link>
+        </div>
 
-            {/* Social Media */}
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social, index) => (
-                <Link
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#f68712] text-white transition-all duration-300 hover:scale-110"
-                  aria-label={social.label}
-                >
-                  <FontAwesomeIcon icon={social.icon} className="w-4 h-4" />
-                </Link>
+        {/* 3 Columns Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-8">
+          
+          {/* About Voyago */}
+          <div>
+            <h3 className="font-bold text-white text-sm mb-3 flex items-center gap-2">
+              <span className="w-1 h-5 bg-[#F68712] rounded-full"></span>
+              About Voyago
+            </h3>
+            <ul className="space-y-2">
+              {aboutVoyago.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-[#F68712] text-sm transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
+
+          {/* Partnerships */}
+          <div>
+            <h3 className="font-bold text-white text-sm mb-3 flex items-center gap-2">
+              <span className="w-1 h-5 bg-[#F68712] rounded-full"></span>
+              Partnerships
+            </h3>
+            <ul className="space-y-2">
+              {partnerships.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-[#F68712] text-sm transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Other Services */}
+          <div>
+            <h3 className="font-bold text-white text-sm mb-3 flex items-center gap-2">
+              <span className="w-1 h-5 bg-[#F68712] rounded-full"></span>
+              Other Services
+            </h3>
+            <ul className="space-y-2">
+              {otherServices.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-[#F68712] text-sm transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Payment Channels */}
+        <div className="border-t border-white/10 pt-6 mb-6">
+          <p className="text-white/60 text-xs text-center mb-4">We Accept</p>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {paymentLogos.map((payment, index) => (
+              <div
+                key={index}
+                className="w-14 h-9 bg-white rounded flex items-center justify-center hover:scale-105 transition-transform shadow-sm"
+                title={payment}
+              >
+                <span className="text-[8px] text-gray-700 font-bold">
+                  {payment}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Row */}
+        <div className="border-t border-white/10 pt-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          
+          {/* Copyright */}
+          <p className="text-white/60 text-xs text-center sm:text-left">
+            © {currentYear} Voyago. All rights reserved.
+          </p>
+
+          {/* Social Media */}
+          <div className="flex items-center gap-2.5">
+            {socialLinks.map((social, index) => (
+              <Link
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#F68712] text-white transition-all hover:scale-110"
+                aria-label={social.label}
+              >
+                <FontAwesomeIcon icon={social.icon} className="w-3.5 h-3.5" />
+              </Link>
+            ))}
           </div>
         </div>
       </div>

@@ -59,7 +59,7 @@ const HeroView: React.FC = () => {
           </div>
         ))}
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60 sm:from-black/40 sm:via-black/30 sm:to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#2C3892]/70 via-[#2C3892]/50 to-[#2C3892]/80" />
       </div>
 
       {/* Content */}
@@ -78,56 +78,62 @@ const HeroView: React.FC = () => {
         <div className="w-full max-w-[90%] sm:max-w-xl md:max-w-2xl">
           <form onSubmit={handleSearch} className="relative group">
             <div className="relative flex items-center">
-              {/* Search Icon */}
+              {/* Search Icon - Voyago Navy */}
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
-                className="absolute left-4 sm:left-5 md:left-6 text-gray-400 w-4 h-4 sm:w-5 sm:h-5 pointer-events-none z-10 transition-colors group-focus-within:text-[#06336e]"
+                className="absolute left-4 sm:left-5 md:left-6 text-[#2C3892]/60 w-4 h-4 sm:w-5 sm:h-5 pointer-events-none z-10 transition-colors group-focus-within:text-[#F68712]"
               />
 
-              {/* Search Input */}
+              {/* Search Input - Voyago Orange Focus Ring */}
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Where do you want to go?"
-                className="w-full pl-11 sm:pl-14 md:pl-16 pr-28 sm:pr-32 md:pr-36 py-3.5 sm:py-4 md:py-5 text-sm sm:text-base md:text-lg rounded-full bg-white/95 backdrop-blur-sm shadow-2xl focus:outline-none focus:ring-4 focus:ring-[#06336e]/30 focus:bg-white transition-all duration-300 placeholder:text-gray-400"
+                className="w-full pl-11 sm:pl-14 md:pl-16 pr-28 sm:pr-32 md:pr-36 py-3.5 sm:py-4 md:py-4 text-sm sm:text-base md:text-lg rounded-full bg-white/95 backdrop-blur-sm shadow-2xl focus:outline-none focus:ring-4 focus:ring-[#F68712]/50 focus:bg-white transition-all duration-300 placeholder:text-gray-400 border-2 border-transparent focus:border-[#F68712]"
               />
 
-              {/* Search Button */}
+              {/* Search Button - Voyago Orange Primary CTA */}
               <button
                 type="submit"
-                className="absolute right-2 bg-[#06336e] hover:bg-[#04274d] active:bg-[#f68712] text-white px-5 sm:px-7 md:px-9 py-2 sm:py-2.5 md:py-3 rounded-full font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#f68712]/50"
+                className="absolute right-2 bg-[#F68712] hover:bg-[#FFBD59] active:bg-[#2C3892] text-white px-5 sm:px-7 md:px-9 py-2 sm:py-2.5 md:py-3 rounded-full font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#F68712]/30 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#F68712]/50"
               >
                 Search
               </button>
             </div>
           </form>
 
-          <div className="text-center mt-3 xs:mt-4 sm:mt-5">
-            <p className="text-white/90 text-xs sm:text-sm md:text-base font-light">
-              {/* ⭐ 4.8 from 10,000+ reviews • 300,000+ Experiences */}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia 
-            </p>
+
+          {/* Trust Indicators with Brand Colors */}
+          <div className="text-center mt-3 xs:mt-4 sm:mt-2">
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+              <div className="flex items-center gap-1">
+                <span className="text-[#FFBD59] text-sm">★★★★★</span>
+                <span className="text-white/90 text-xs sm:text-sm font-semibold">4.9/5</span>
+              </div>
+              <div className="w-px h-4 bg-white/30"></div>
+              <span className="text-white/90 text-xs sm:text-sm font-medium">300,000+ Experiences</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Indicators */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2.5 px-4 py-2.5 rounded-full bg-black/20 backdrop-blur-md">
+      {/* Indicators - Voyago Orange Active State */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2.5 px-4 py-2.5 rounded-full bg-[#2C3892]/30 backdrop-blur-md border border-white/20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`transition-all duration-500 rounded-full focus:outline-none focus:ring-2 focus:ring-white/50 ${
-              index === currentSlide
-                ? 'w-10 sm:w-12 h-2 bg-white shadow-lg'
-                : 'w-2 h-2 bg-white/40 hover:bg-white/70 hover:scale-125'
-            }`}
+            className={`transition-all duration-500 rounded-full focus:outline-none focus:ring-2 focus:ring-[#F68712]/50 ${index === currentSlide
+                ? 'w-10 sm:w-12 h-2 bg-[#F68712] shadow-lg shadow-[#F68712]/50'
+                : 'w-2 h-2 bg-white/50 hover:bg-[#FFBD59] hover:scale-125'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={index === currentSlide ? 'true' : 'false'}
           />
         ))}
       </div>
+
 
     </div>
   );
