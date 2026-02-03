@@ -7,18 +7,15 @@ import FooterComp from "@/components/FooterComp";
 import NavbarComp from "@/components/NavbarComp";
 import BestDealsView from "@/views/home/BestDealsView";
 import TravelersChoiceView from "@/views/home/TravelersChoiceView";
-import NavbarMobileComp from "@/components/NavbarMobileComp";
+
 export default function Home() {
   return (
     <>
-    <NavbarMobileComp></NavbarMobileComp>
-    <NavbarComp></NavbarComp>
     <HeroView></HeroView>
     <WhyView></WhyView>
     <TravelersChoiceView></TravelersChoiceView>
     <BestDealsView></BestDealsView>
     <TopDestinationView></TopDestinationView>
-    <FooterComp></FooterComp>
     </>
   );
 }

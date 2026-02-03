@@ -1,18 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faHeart,
-  faChevronLeft, 
-  faChevronRight,
-  faStar,
+import {
   faMapMarkerAlt,
+  faStar,
+  faUsers,
+  faHeart as faHeartSolid,
 } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 
+
+// ─────────────────────────────
+// Types
+// ─────────────────────────────
 export interface Attraction {
-  id: number;
+  id: number | string;
   title: string;
   city: string;
   country: string;
@@ -20,215 +24,129 @@ export interface Attraction {
   reviewCount: number;
   price: number;
   originalPrice?: number;
-  currency: string;
   images: string[];
-  badge?: string;
 }
 
-interface AttractionCardProps {
+interface Props {
   attraction: Attraction;
   className?: string;
 }
 
-const AttractionCardComp: React.FC<AttractionCardProps> = ({ 
+
+// ─────────────────────────────
+// Helpers
+// ─────────────────────────────
+const formatPrice = (v: number) =>
+  `IDR ${v.toLocaleString('id-ID')}`;
+
+const discount = (o: number, p: number) =>
+  Math.round(((o - p) / o) * 100);
+
+
+// ─────────────────────────────
+// Component
+// ─────────────────────────────
+export default function AttractionCard({
   attraction,
-  className = ''
-}) => {
-  const [wishlist, setWishlist] = useState<Set<number>>(new Set());
-  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  className = '',
+}: Props) {
+  const [wishlisted, setWishlisted] = useState(false);
 
-  const toggleWishlist = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setWishlist(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(attraction.id)) {
-        newSet.delete(attraction.id);
-      } else {
-        newSet.add(attraction.id);
-      }
-      return newSet;
-    });
-  };
+  const {
+    images,
+    title,
+    city,
+    country,
+    rating,
+    reviewCount,
+    price,
+    originalPrice,
+  } = attraction;
 
-  const nextImage = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev + 1) % attraction.images.length);
-  };
-
-  const prevImage = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev - 1 + attraction.images.length) % attraction.images.length);
-  };
-
-  const formatPrice = (price: number, currency: string) => {
-    return `${currency} ${price.toLocaleString('id-ID')}`;
-  };
-
-  const formatReviewCount = (count: number) => {
-    if (count >= 1000) {
-      return `${(count / 1000).toFixed(1)}k`;
-    }
-    return count.toString();
-  };
-
-  const calculateDiscount = (original: number, current: number) => {
-    return Math.round(((original - current) / original) * 100);
-  };
-
-  const isWishlisted = wishlist.has(attraction.id);
-  const hasDiscount = attraction.originalPrice && attraction.originalPrice > attraction.price;
-  const discountPercent = hasDiscount 
-    ? calculateDiscount(attraction.originalPrice!, attraction.price) 
-    : 0;
+  const image = images?.[0];
+  const hasDiscount = originalPrice && originalPrice > price;
 
   return (
-    <Link
-      href="/comingsoon"
-      className={`group/card cursor-pointer ${className}`}
+    <div
+      className={`
+        group bg-white rounded-xl border border-gray-200
+        shadow-sm hover:shadow-lg hover:-translate-y-1
+        transition-all duration-300 cursor-pointer
+        flex flex-col overflow-hidden
+        ${className}
+      `}
     >
-      <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
-        
-        {/* Image Section */}
-        <div className="relative h-52 sm:h-56 md:h-60 lg:h-64 overflow-hidden flex-shrink-0">
-          
-          {/* Images */}
-          {attraction.images.map((image, idx) => (
-            <img
-              key={idx}
-              src={image}
-              alt={`${attraction.title} - Image ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
-                idx === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
-              }`}
-            />
-          ))}
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+      {/* IMAGE */}
+      <div className="relative aspect-[4/3]">
 
-          {/* Top Section - Discount Badge & Wishlist */}
-          <div className="absolute top-0 left-0 right-0 p-3 sm:p-3.5 flex items-start justify-between z-10">
-            
-            {/* Discount Badge */}
-            {hasDiscount && (
-              <div className="bg-red-500 text-white px-2.5 py-1.5 rounded-lg shadow-lg">
-                <span className="text-xs font-bold">-{discountPercent}%</span>
-              </div>
-            )}
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover group-hover:scale-105 transition"
+        />
 
-            {/* Wishlist Button */}
-            <button
-              onClick={toggleWishlist}
-              className={`ml-auto w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full shadow-md transition-all duration-300 ${
-                isWishlisted 
-                  ? 'bg-red-500 scale-110' 
-                  : 'bg-white hover:scale-110'
-              }`}
-              aria-label="Add to wishlist"
-            >
-              <FontAwesomeIcon
-                icon={faHeart}
-                className={`w-4.5 h-4.5 sm:w-5 sm:h-5 transition-all duration-300 ${
-                  isWishlisted ? 'text-white' : 'text-gray-600'
-                }`}
-              />
-            </button>
-          </div>
+        {/* discount */}
+        {hasDiscount && (
+          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded">
+            -{discount(originalPrice!, price)}%
+          </span>
+        )}
 
-          {/* Image Navigation */}
-          {attraction.images.length > 1 && (
-            <>
-              <button
-                onClick={prevImage}
-                className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-white/95 hover:bg-white rounded-full shadow-md opacity-0 group-hover/card:opacity-100 hover:scale-110 transition-all duration-300"
-                aria-label="Previous image"
-              >
-                <FontAwesomeIcon icon={faChevronLeft} className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-700" />
-              </button>
-              <button
-                onClick={nextImage}
-                className="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-white/95 hover:bg-white rounded-full shadow-md opacity-0 group-hover/card:opacity-100 hover:scale-110 transition-all duration-300"
-                aria-label="Next image"
-              >
-                <FontAwesomeIcon icon={faChevronRight} className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-700" />
-              </button>
-            </>
-          )}
+        {/* wishlist */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setWishlisted(!wishlisted);
+          }}
+          className="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow"
+        >
+          <FontAwesomeIcon
+            icon={wishlisted ? faHeartSolid : faHeartRegular}
+            className="text-sm"
+            color={wishlisted ? '#ef4444' : '#94a3b8'}
+          />
+        </button>
 
-          {/* Image Indicators */}
-          {attraction.images.length > 1 && (
-            <div className="absolute bottom-3 sm:bottom-3.5 left-1/2 -translate-x-1/2 z-10 flex gap-1.5 sm:gap-2">
-              {attraction.images.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 shadow-sm ${
-                    idx === currentImageIndex
-                      ? 'w-7 sm:w-8 bg-white'
-                      : 'w-1.5 sm:w-2 bg-white/60'
-                  }`}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Content Section */}
-        <div className="p-4 sm:p-5 flex flex-col flex-grow">
-          
-          {/* Location */}
-          <div className="flex items-center gap-1.5 mb-3">
-            <FontAwesomeIcon icon={faMapMarkerAlt} className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-            <span className="text-xs sm:text-sm text-gray-600 font-medium truncate">
-              {attraction.city}, {attraction.country}
-            </span>
-          </div>
-
-          {/* Title */}
-          <h3 className="text-gray-900 font-semibold text-sm sm:text-base mb-3 leading-snug line-clamp-2">
-            {attraction.title}
-          </h3>
-
-          {/* Rating & Reviews */}
-          <div className="flex items-center gap-2 mb-auto">
-            <div className="flex items-center gap-1">
-              <FontAwesomeIcon icon={faStar} className="w-4 h-4 text-[#f68712]" />
-              <span className="font-bold text-gray-900 text-sm">
-                {attraction.rating}
-              </span>
-            </div>
-            <span className="text-sm text-gray-500">
-              ({formatReviewCount(attraction.reviewCount)} reviews)
-            </span>
-          </div>
-
-          {/* Price Section */}
-          <div className="mt-4">
-            <div className="flex flex-col gap-1">
-              <span className="text-xs text-gray-500 font-medium">from</span>
-              
-              {hasDiscount ? (
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-xl sm:text-2xl font-bold text-[#06336e]">
-                    {formatPrice(attraction.price, attraction.currency)}
-                  </span>
-                  <span className="text-sm sm:text-base text-gray-400 line-through font-medium">
-                    {formatPrice(attraction.originalPrice!, attraction.currency)}
-                  </span>
-                </div>
-              ) : (
-                <span className="text-xl sm:text-2xl font-bold text-[#06336e]">
-                  {formatPrice(attraction.price, attraction.currency)}
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
+        {/* location */}
+        <span className="absolute bottom-2 left-2 text-white text-xs font-medium flex items-center gap-1 drop-shadow">
+          <FontAwesomeIcon icon={faMapMarkerAlt} />
+          {city}, {country}
+        </span>
       </div>
-    </Link>
-  );
-};
 
-export default AttractionCardComp;
+
+      {/* CONTENT */}
+      <div className="p-3 flex flex-col flex-1">
+
+        <h3 className="text-sm font-semibold line-clamp-2 text-slate-800">
+          {title}
+        </h3>
+
+        {/* rating */}
+        <div className="flex items-center gap-1 mt-1 text-xs text-slate-600">
+          <FontAwesomeIcon icon={faStar} className="text-amber-400" />
+          <span className="font-bold">{rating}</span>
+          <span>({reviewCount.toLocaleString()})</span>
+        </div>
+
+        <div className="flex-1" />
+
+        {/* price */}
+        <div className="mt-2 flex items-baseline gap-2">
+          <span className="font-bold text-indigo-700">
+            {formatPrice(price)}
+          </span>
+
+          {hasDiscount && (
+            <span className="text-xs line-through text-gray-400">
+              {formatPrice(originalPrice!)}
+            </span>
+          )}
+        </div>
+
+      </div>
+    </div>
+  );
+}

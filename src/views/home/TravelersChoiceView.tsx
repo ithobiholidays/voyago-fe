@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import AttractionCardComp from '@/components/AttractionCardComp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import AttractionCardComponent from '@/components/AttractionCardComp';
 
 export default function TravelersChoiceView() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -175,13 +176,7 @@ export default function TravelersChoiceView() {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <div className="flex gap-4 sm:gap-5 md:gap-6 pb-4">
-              {attractions.map((attraction) => (
-                <AttractionCardComp
-                  key={attraction.id}
-                  attraction={attraction}
-                  className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[360px] snap-start"
-                />
-              ))}
+              
             </div>
           </div>
         </div>

@@ -40,7 +40,7 @@ interface Currency {
   name: string;
 }
 
-const MobileNavbar: React.FC = () => {
+const NavbarMobileComp: React.FC = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -351,7 +351,7 @@ const MobileNavbar: React.FC = () => {
               }`}
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="w-3 h-3" />
-              <span>Destinations</span>
+              <span>Popular Destinations</span>
             </button>
             <button 
               onClick={() => setActiveMenu(activeMenu === 'attractions' ? null : 'attractions')}
@@ -379,10 +379,6 @@ const MobileNavbar: React.FC = () => {
               <FontAwesomeIcon icon={faMountain} className="w-3 h-3" />
               <span>Experiences</span>
             </button>
-            <Link href="/gift" className="flex items-center gap-1.5 px-3 py-1.5 text-white hover:bg-[#F68712] text-xs font-semibold rounded-lg whitespace-nowrap transition-colors">
-              <FontAwesomeIcon icon={faGift} className="w-3 h-3" />
-              <span>Gift</span>
-            </Link>
             <Link href="/accommodation" className="flex items-center gap-1.5 px-3 py-1.5 text-white hover:bg-[#F68712] text-xs font-semibold rounded-lg whitespace-nowrap transition-colors">
               <FontAwesomeIcon icon={faHotel} className="w-3 h-3" />
               <span>Accommodation</span>
@@ -390,6 +386,10 @@ const MobileNavbar: React.FC = () => {
             <Link href="/flight" className="flex items-center gap-1.5 px-3 py-1.5 text-white hover:bg-[#F68712] text-xs font-semibold rounded-lg whitespace-nowrap transition-colors">
               <FontAwesomeIcon icon={faPlane} className="w-3 h-3" />
               <span>Flight</span>
+            </Link>
+            <Link href="/gift" className="flex items-center gap-1.5 px-3 py-1.5 text-white hover:bg-[#F68712] text-xs font-semibold rounded-lg whitespace-nowrap transition-colors">
+              <FontAwesomeIcon icon={faGift} className="w-3 h-3" />
+              <span>Gift</span>
             </Link>
           </div>
         </div>
@@ -659,4 +659,4 @@ const MobileNavbar: React.FC = () => {
   );
 };
 
-export default MobileNavbar;
+export default NavbarMobileComp;

@@ -59,7 +59,7 @@ const HeroView: React.FC = () => {
           </div>
         ))}
 
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2C3892]/70 via-[#2C3892]/50 to-[#2C3892]/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60 sm:from-black/40 sm:via-black/30 sm:to-black/50" />
       </div>
 
       {/* Content */}

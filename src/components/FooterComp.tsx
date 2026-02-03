@@ -56,12 +56,12 @@ const FooterComp: React.FC = () => {
       
       {/* Coming Soon Banner */}
       <div className="bg-[#F68712]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="text-center">
-            <h3 className="text-white font-bold text-base md:text-lg">
+            <h3 className="text-white font-bold text-base">
               Coming Soon
             </h3>
-            <p className="text-white/90 text-xs md:text-sm">
+            <p className="text-white/90 text-xs">
               Information available on apps is coming soon
             </p>
           </div>
@@ -69,11 +69,11 @@ const FooterComp: React.FC = () => {
       </div>
 
       {/* Main Footer */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        {/* Logo Section - Centered & Compact */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-block">
+        {/* Logo & Social Media */}
+        <div className="text-center mb-6">
+          <Link href="/" className="inline-block mb-3">
             <Image 
               src="/Logo/Logo Voyago.png" 
               alt="Voyago Logo" 
@@ -82,100 +82,9 @@ const FooterComp: React.FC = () => {
               className="h-10 w-auto brightness-0 invert"
             />
           </Link>
-        </div>
-
-        {/* 3 Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-8">
           
-          {/* About Voyago */}
-          <div>
-            <h3 className="font-bold text-white text-sm mb-3 flex items-center gap-2">
-              <span className="w-1 h-5 bg-[#F68712] rounded-full"></span>
-              About Voyago
-            </h3>
-            <ul className="space-y-2">
-              {aboutVoyago.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-white/70 hover:text-[#F68712] text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Partnerships */}
-          <div>
-            <h3 className="font-bold text-white text-sm mb-3 flex items-center gap-2">
-              <span className="w-1 h-5 bg-[#F68712] rounded-full"></span>
-              Partnerships
-            </h3>
-            <ul className="space-y-2">
-              {partnerships.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-white/70 hover:text-[#F68712] text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Other Services */}
-          <div>
-            <h3 className="font-bold text-white text-sm mb-3 flex items-center gap-2">
-              <span className="w-1 h-5 bg-[#F68712] rounded-full"></span>
-              Other Services
-            </h3>
-            <ul className="space-y-2">
-              {otherServices.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-white/70 hover:text-[#F68712] text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Payment Channels */}
-        <div className="border-t border-white/10 pt-6 mb-6">
-          <p className="text-white/60 text-xs text-center mb-4">We Accept</p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {paymentLogos.map((payment, index) => (
-              <div
-                key={index}
-                className="w-14 h-9 bg-white rounded flex items-center justify-center hover:scale-105 transition-transform shadow-sm"
-                title={payment}
-              >
-                <span className="text-[8px] text-gray-700 font-bold">
-                  {payment}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Row */}
-        <div className="border-t border-white/10 pt-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          
-          {/* Copyright */}
-          <p className="text-white/60 text-xs text-center sm:text-left">
-            © {currentYear} Voyago. All rights reserved.
-          </p>
-
-          {/* Social Media */}
-          <div className="flex items-center gap-2.5">
+          {/* Social Media Below Logo */}
+          <div className="flex items-center justify-center gap-2.5">
             {socialLinks.map((social, index) => (
               <Link
                 key={index}
@@ -189,6 +98,95 @@ const FooterComp: React.FC = () => {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* 3 Columns - Centered */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto mb-6">
+          
+          {/* About Voyago */}
+          <div className="text-center">
+            <h3 className="font-bold text-white text-sm mb-3 flex items-center justify-center gap-2">
+              <span className="w-1 h-4 bg-[#F68712] rounded-full"></span>
+              About Voyago
+            </h3>
+            <ul className="space-y-1.5">
+              {aboutVoyago.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-[#F68712] text-xs transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Partnerships */}
+          <div className="text-center">
+            <h3 className="font-bold text-white text-sm mb-3 flex items-center justify-center gap-2">
+              <span className="w-1 h-4 bg-[#F68712] rounded-full"></span>
+              Partnerships
+            </h3>
+            <ul className="space-y-1.5">
+              {partnerships.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-[#F68712] text-xs transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Other Services */}
+          <div className="text-center">
+            <h3 className="font-bold text-white text-sm mb-3 flex items-center justify-center gap-2">
+              <span className="w-1 h-4 bg-[#F68712] rounded-full"></span>
+              Other Services
+            </h3>
+            <ul className="space-y-1.5">
+              {otherServices.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-[#F68712] text-xs transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Payment Channels */}
+        <div className="border-t border-white/10 pt-5 mb-5">
+          <p className="text-white/60 text-xs text-center mb-3">We Accept</p>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {paymentLogos.map((payment, index) => (
+              <div
+                key={index}
+                className="w-12 h-8 bg-white rounded flex items-center justify-center hover:scale-105 transition-transform"
+                title={payment}
+              >
+                <span className="text-[7px] text-gray-700 font-bold">
+                  {payment}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-white/10 pt-4 text-center">
+          <p className="text-white/60 text-xs">
+            © {currentYear} Voyago. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

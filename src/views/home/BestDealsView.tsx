@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import AttractionCardComp from '@/components/AttractionCardComp';
+import AttractionCardComponent from '@/components/cards/products/AttractionCardComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,7 +11,7 @@ export default function BestDealsView() {
   const attractions = [
     {
       id: 1,
-      title: 'Grand Canyon West, Hoover Dam Stop and Optional Lunch and Skywalk',
+      title: 'Grand Canyon West, Hoover Dam Stop and Optional Lunch and Skywalkasdjoaisdjiaosjdoasjdioasjoidjasodjasodjasiojd',
       city: 'Las Vegas',
       country: 'Nevada',
       rating: 4.9,
@@ -174,14 +174,25 @@ export default function BestDealsView() {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <div className="flex gap-4 sm:gap-5 md:gap-6 pb-4">
-              {attractions.map((attraction) => (
-                <AttractionCardComp
-                  key={attraction.id}
-                  attraction={attraction}
-                  className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[360px] snap-start"
-                />
-              ))}
-            </div>
+  {attractions.map((item) => (
+    <div
+      key={item.id}
+      className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[250px] snap-start"
+    >
+      <AttractionCardComponent
+        image={item.images[0]}
+        location={`${item.city}, ${item.country}`}
+        title={item.title}
+        rating={item.rating}
+        reviewCount={item.reviewCount.toLocaleString()}
+        bookedCount="1K+"
+        price={item.price}
+        originalPrice={item.originalPrice}
+      />
+    </div>
+  ))}
+</div>
+
           </div>
         </div>
 
