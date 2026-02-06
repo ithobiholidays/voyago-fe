@@ -2,10 +2,10 @@
 'use client';
 
 import { useRef } from 'react';
-import AttractionCardComp from '@/components/AttractionCardComp';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import AttractionCardComponent from '@/components/AttractionCardComp';
+
 
 export default function TravelersChoiceView() {
   const scrollRef = useRef<HTMLDivElement>(null);

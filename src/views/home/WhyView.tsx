@@ -130,9 +130,7 @@ const WhyView: React.FC = () => {
 
         {/* Title with Subtitle */}
         <div 
-          className={`text-center mb-12 sm:mb-16 md:mb-20 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+          className="text-center mb-12 sm:mb-16 md:mb-20"
         >
           <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
             Why travel with{' '}
@@ -151,12 +149,6 @@ const WhyView: React.FC = () => {
           {features.map((feature, index) => (
             <div
               key={feature.id}
-              className={`transition-all duration-700 ${
-                isVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="h-full text-center group cursor-default bg-white rounded-2xl p-8 lg:p-10 border-2 border-gray-100 hover:border-[#2C3892] transition-all duration-500 hover:shadow-2xl hover:shadow-[#F68712]/10 hover:scale-105 flex flex-col">
                 
@@ -246,9 +238,7 @@ const WhyView: React.FC = () => {
 
         {/* Trust Bar */}
         <div 
-          className={`mt-16 sm:mt-20 md:mt-24 transition-all duration-700 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+          className="mt-16 sm:mt-20 md:mt-24"
         >
           <div className="bg-gradient-to-r from-[#2C3892] via-[#2C3892] to-[#2C3892] rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl">
             <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 text-center">

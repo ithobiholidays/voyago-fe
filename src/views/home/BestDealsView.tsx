@@ -16,14 +16,11 @@ export default function BestDealsView() {
       country: 'Nevada',
       rating: 4.9,
       reviewCount: 18355,
+      bookedCount: 18355,
       price: 1690827,
       originalPrice: 2500000,
       currency: 'IDR',
-      images: [
-        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop',
-      ],
+      images: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop'    
     },
     {
       id: 2,
@@ -32,13 +29,11 @@ export default function BestDealsView() {
       country: 'Nevada',
       rating: 4.6,
       reviewCount: 4262,
+      bookedCount:18355,
       price: 1878697,
       originalPrice: 2200000,
       currency: 'IDR',
-      images: [
-        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop',
-      ],
+      images: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop'
     },
     {
       id: 3,
@@ -47,12 +42,10 @@ export default function BestDealsView() {
       country: 'Nevada',
       rating: 4.9,
       reviewCount: 4981,
+      bookedCount: 18355,
       price: 1690827,
       currency: 'IDR',
-      images: [
-        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&auto=format&fit=crop',
-      ],
+      images: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&auto=format&fit=crop'
     },
     {
       id: 4,
@@ -61,13 +54,11 @@ export default function BestDealsView() {
       country: 'Nevada',
       rating: 4.9,
       reviewCount: 4848,
+      bookedCount: 18355,
       price: 1161376,
       originalPrice: 1500000,
       currency: 'IDR',
-      images: [
-        'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop',
-      ],
+      images:'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop'
     },
     {
       id: 5,
@@ -76,12 +67,10 @@ export default function BestDealsView() {
       country: 'Nevada',
       rating: 4.8,
       reviewCount: 3542,
+      bookedCount: 18355,
       price: 2450000,
       currency: 'IDR',
-      images: [
-        'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop',
-      ],
+      images:'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&auto=format&fit=crop'
     },
     {
       id: 6,
@@ -90,11 +79,10 @@ export default function BestDealsView() {
       country: 'France',
       rating: 4.8,
       reviewCount: 25643,
+      bookedCount: 18355,
       price: 850000,
       currency: 'IDR',
-      images: [
-        'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop',
-      ],
+      images:'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop'
     },
     {
       id: 7,
@@ -103,12 +91,11 @@ export default function BestDealsView() {
       country: 'Italy',
       rating: 4.9,
       reviewCount: 18234,
+      bookedCount: 18355,
       price: 1200000,
       originalPrice: 1500000,
       currency: 'IDR',
-      images: [
-        'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop',
-      ],
+      images:'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop'
     },
     {
       id: 8,
@@ -117,11 +104,10 @@ export default function BestDealsView() {
       country: 'United Kingdom',
       rating: 4.7,
       reviewCount: 32156,
+      bookedCount: 18355,
       price: 750000,
       currency: 'IDR',
-      images: [
-        'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&auto=format&fit=crop',
-      ],
+      images:'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&auto=format&fit=crop'
     }
   ]; // Your data
 
@@ -174,24 +160,25 @@ export default function BestDealsView() {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <div className="flex gap-4 sm:gap-5 md:gap-6 pb-4">
-  {attractions.map((item) => (
-    <div
-      key={item.id}
-      className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[250px] snap-start"
-    >
-      <AttractionCardComponent
-        image={item.images[0]}
-        location={`${item.city}, ${item.country}`}
-        title={item.title}
-        rating={item.rating}
-        reviewCount={item.reviewCount.toLocaleString()}
-        bookedCount="1K+"
-        price={item.price}
-        originalPrice={item.originalPrice}
-      />
-    </div>
-  ))}
-</div>
+              {attractions.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[250px] snap-start"
+                >
+                  <AttractionCardComponent
+                    id={item.id}
+                    image={item.images}
+                    location={`${item.city}, ${item.country}`}
+                    title={item.title}
+                    rating={item.rating}
+                    reviewCount={item.reviewCount.toLocaleString()}
+                    bookedCount={item.bookedCount.toLocaleString()}
+                    price={item.price}
+                    originalPrice={item.originalPrice}
+                  />
+                </div>
+              ))}
+            </div>
 
           </div>
         </div>

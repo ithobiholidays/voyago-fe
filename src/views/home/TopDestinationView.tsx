@@ -97,7 +97,7 @@ const TopDestinationView: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#06336e] mb-4">
-            Where next to?
+            Where to next?
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
             Discover the most popular destinations around the world

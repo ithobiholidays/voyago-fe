@@ -64,20 +64,12 @@ const NavbarMobileComp: React.FC = () => {
 
   const languages: Language[] = [
     { code: 'en-US', name: 'English (US)', flag: '🇺🇸' },
-    { code: 'en-GB', name: 'English (UK)', flag: '🇬🇧' },
     { code: 'id-ID', name: 'Bahasa Indonesia', flag: '🇮🇩' },
-    { code: 'zh-CN', name: '简体中文', flag: '🇨🇳' },
-    { code: 'ja-JP', name: '日本語', flag: '🇯🇵' },
-    { code: 'ko-KR', name: '한국어', flag: '🇰🇷' },
   ];
 
   const currencies: Currency[] = [
     { code: 'USD', symbol: '$', name: 'US Dollar' },
-    { code: 'EUR', symbol: '€', name: 'Euro' },
-    { code: 'GBP', symbol: '£', name: 'British Pound' },
     { code: 'IDR', symbol: 'Rp', name: 'Indonesian Rupiah' },
-    { code: 'JPY', symbol: '¥', name: 'Japanese Yen' },
-    { code: 'SGD', symbol: 'S$', name: 'Singapore Dollar' },
   ];
 
   const bestDeals = [
@@ -379,16 +371,27 @@ const NavbarMobileComp: React.FC = () => {
               <FontAwesomeIcon icon={faMountain} className="w-3 h-3" />
               <span>Experiences</span>
             </button>
-            <Link href="/accommodation" className="flex items-center gap-1.5 px-3 py-1.5 text-white hover:bg-[#F68712] text-xs font-semibold rounded-lg whitespace-nowrap transition-colors">
-              <FontAwesomeIcon icon={faHotel} className="w-3 h-3" />
+            <Link 
+              href="/comingsoon" 
+              className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white/40 cursor-not-allowed pointer-events-none rounded-lg"
+            >
+              <FontAwesomeIcon icon={faHotel} className="w-4 h-4" />
               <span>Accommodation</span>
             </Link>
-            <Link href="/flight" className="flex items-center gap-1.5 px-3 py-1.5 text-white hover:bg-[#F68712] text-xs font-semibold rounded-lg whitespace-nowrap transition-colors">
-              <FontAwesomeIcon icon={faPlane} className="w-3 h-3" />
+
+            <Link 
+              href="/comingsoon" 
+              className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white/40 cursor-not-allowed pointer-events-none rounded-lg"
+            >
+              <FontAwesomeIcon icon={faPlane} className="w-4 h-4" />
               <span>Flight</span>
             </Link>
-            <Link href="/gift" className="flex items-center gap-1.5 px-3 py-1.5 text-white hover:bg-[#F68712] text-xs font-semibold rounded-lg whitespace-nowrap transition-colors">
-              <FontAwesomeIcon icon={faGift} className="w-3 h-3" />
+
+            <Link 
+              href="/comingsoon" 
+              className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white/40 cursor-not-allowed pointer-events-none rounded-lg"
+            >
+              <FontAwesomeIcon icon={faGift} className="w-4 h-4" />
               <span>Gift</span>
             </Link>
           </div>

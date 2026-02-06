@@ -3,32 +3,33 @@
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import BannerComp from "@/components/BannerComp";
+import BannerComp from "@/components/BannerComponent";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faMapMarkerAlt, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import BannerComponent from '@/components/BannerComponent';
 
 // Sample destinations data
 const allDestinations = [
-  { id: 1, name: 'Las Vegas', country: 'United States', image: '/images/las-vegas.jpg', activities: 2847 },
-  { id: 2, name: 'Rome', country: 'Italy', image: '/images/rome.jpg', activities: 1965 },
-  { id: 3, name: 'Paris', country: 'France', image: '/images/paris.jpg', activities: 2134 },
-  { id: 4, name: 'London', country: 'United Kingdom', image: '/images/london.jpg', activities: 3156 },
-  { id: 5, name: 'New York City', country: 'United States', image: '/images/nyc.jpg', activities: 3892 },
-  { id: 6, name: 'Washington DC', country: 'United States', image: '/images/washington.jpg', activities: 1543 },
-  { id: 7, name: 'Cancun', country: 'Mexico', image: '/images/cancun.jpg', activities: 987 },
-  { id: 8, name: 'Florence', country: 'Italy', image: '/images/florence.jpg', activities: 1234 },
-  { id: 9, name: 'Barcelona', country: 'Spain', image: '/images/barcelona.jpg', activities: 1876 },
-  { id: 10, name: 'Oahu', country: 'United States', image: '/images/oahu.jpg', activities: 765 },
-  { id: 11, name: 'Tokyo', country: 'Japan', image: '/images/tokyo.jpg', activities: 3421 },
-  { id: 12, name: 'Dubai', country: 'United Arab Emirates', image: '/images/dubai.jpg', activities: 2567 },
-  { id: 13, name: 'Bangkok', country: 'Thailand', image: '/images/bangkok.jpg', activities: 2890 },
-  { id: 14, name: 'Singapore', country: 'Singapore', image: '/images/singapore.jpg', activities: 1987 },
-  { id: 15, name: 'Sydney', country: 'Australia', image: '/images/sydney.jpg', activities: 2341 },
-  { id: 16, name: 'Amsterdam', country: 'Netherlands', image: '/images/amsterdam.jpg', activities: 1654 },
-  { id: 17, name: 'Berlin', country: 'Germany', image: '/images/berlin.jpg', activities: 2123 },
-  { id: 18, name: 'Prague', country: 'Czech Republic', image: '/images/prague.jpg', activities: 1432 },
-  { id: 19, name: 'Vienna', country: 'Austria', image: '/images/vienna.jpg', activities: 1765 },
-  { id: 20, name: 'Istanbul', country: 'Turkey', image: '/images/istanbul.jpg', activities: 2456 },
+  { id: 1, name: 'Las Vegas', country: 'United States', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2847 },
+  { id: 2, name: 'Rome', country: 'Italy', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1965 },
+  { id: 3, name: 'Paris', country: 'France', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2134 },
+  { id: 4, name: 'London', country: 'United Kingdom', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 3156 },
+  { id: 5, name: 'New York City', country: 'United States', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 3892 },
+  { id: 6, name: 'Washington DC', country: 'United States', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1543 },
+  { id: 7, name: 'Cancun', country: 'Mexico', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 987 },
+  { id: 8, name: 'Florence', country: 'Italy', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1234 },
+  { id: 9, name: 'Barcelona', country: 'Spain', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1876 },
+  { id: 10, name: 'Oahu', country: 'United States', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 765 },
+  { id: 11, name: 'Tokyo', country: 'Japan', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 3421 },
+  { id: 12, name: 'Dubai', country: 'United Arab Emirates', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2567 },
+  { id: 13, name: 'Bangkok', country: 'Thailand', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2890 },
+  { id: 14, name: 'Singapore', country: 'Singapore', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1987 },
+  { id: 15, name: 'Sydney', country: 'Australia', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2341 },
+  { id: 16, name: 'Amsterdam', country: 'Netherlands', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1654 },
+  { id: 17, name: 'Berlin', country: 'Germany', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2123 },
+  { id: 18, name: 'Prague', country: 'Czech Republic', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1432 },
+  { id: 19, name: 'Vienna', country: 'Austria', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1765 },
+  { id: 20, name: 'Istanbul', country: 'Turkey', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2456 },
     { id: 21, name: 'Seoul', country: 'South Korea', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2789 },
   { id: 22, name: 'Busan', country: 'South Korea', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 1345 },
   { id: 23, name: 'Osaka', country: 'Japan', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2198 },
@@ -217,13 +218,13 @@ const DestinationView: React.FC = () => {
   return (
     <>
       {/* Banner */}
-      <BannerComp
+      <BannerComponent
         backgroundImage="/logo/background.jpg"
         title="All Destination Page"
         description="Custom description text"
         height="small"
         backgroundSize="cover"
-        overlayClassName="bg-[#2C3892]"
+        overlayClassName="bg-gradient-to-b from-black/50 via-black/40 to-black/60"
       />
       
       {/* Main Content */}

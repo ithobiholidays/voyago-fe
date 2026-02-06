@@ -41,7 +41,7 @@ interface BannerProps {
   overlayClassName?: string;
 }
 
-const BannerComp: React.FC<BannerProps> = ({
+const BannerComponent: React.FC<BannerProps> = ({
   // Background defaults
   backgroundImage = '/images/default-banner.jpg',
   backgroundPosition = 'center',
@@ -183,4 +183,4 @@ const BannerComp: React.FC<BannerProps> = ({
   );
 };
 
-export default BannerComp;
+export default BannerComponent;

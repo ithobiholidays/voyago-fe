@@ -1,5 +1,5 @@
 import ComingSoonView from "@/views/comingsoon/ComingSoonView";
-export default function Home() {
+export default function Comingsoon() {
   return (
     <>
     <ComingSoonView></ComingSoonView>

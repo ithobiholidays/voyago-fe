@@ -52,7 +52,7 @@ interface Attraction {
   image: string;
 }
 
-const NavbarComp: React.FC = () => {
+const NavigationComponent: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
@@ -77,20 +77,12 @@ const NavbarComp: React.FC = () => {
 
   const languages: Language[] = [
     { code: 'en-US', name: 'English (US)', flag: '🇺🇸' },
-    { code: 'en-GB', name: 'English (UK)', flag: '🇬🇧' },
     { code: 'id-ID', name: 'Bahasa Indonesia', flag: '🇮🇩' },
-    { code: 'zh-CN', name: '简体中文', flag: '🇨🇳' },
-    { code: 'ja-JP', name: '日本語', flag: '🇯🇵' },
-    { code: 'ko-KR', name: '한국어', flag: '🇰🇷' },
   ];
 
   const currencies: Currency[] = [
     { code: 'USD', symbol: '$', name: 'US Dollar' },
-    { code: 'EUR', symbol: '€', name: 'Euro' },
-    { code: 'GBP', symbol: '£', name: 'British Pound' },
     { code: 'IDR', symbol: 'Rp', name: 'Indonesian Rupiah' },
-    { code: 'JPY', symbol: '¥', name: 'Japanese Yen' },
-    { code: 'SGD', symbol: 'S$', name: 'Singapore Dollar' },
   ];
 
   const bestDeals: Destination[] = [
@@ -459,17 +451,26 @@ const NavbarComp: React.FC = () => {
                 </button>
               </div>
 
-              <Link href="/hotels" className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white hover:bg-[#F68712] hover:text-[white] rounded-lg transition-colors">
+             <Link 
+                href="/comingsoon" 
+                className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white/40 cursor-not-allowed pointer-events-none rounded-lg"
+              >
                 <FontAwesomeIcon icon={faHotel} className="w-4 h-4" />
                 <span>Accommodation</span>
               </Link>
 
-              <Link href="/flights" className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white hover:bg-[#F68712] hover:text-[white] rounded-lg transition-colors">
+              <Link 
+                href="/comingsoon" 
+                className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white/40 cursor-not-allowed pointer-events-none rounded-lg"
+              >
                 <FontAwesomeIcon icon={faPlane} className="w-4 h-4" />
                 <span>Flight</span>
               </Link>
 
-              <Link href="/gift" className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white hover:bg-[#F68712] hover:text-[white] rounded-lg transition-colors">
+              <Link 
+                href="/comingsoon" 
+                className="flex items-center gap-2 px-5 py-3 text-xs font-semibold text-white/40 cursor-not-allowed pointer-events-none rounded-lg"
+              >
                 <FontAwesomeIcon icon={faGift} className="w-4 h-4" />
                 <span>Gift</span>
               </Link>
@@ -612,4 +613,4 @@ const NavbarComp: React.FC = () => {
   );
 };
 
-export default NavbarComp;
+export default NavigationComponent;
