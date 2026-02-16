@@ -15,163 +15,95 @@ interface Destination {
 }
 
 const destinations: Destination[] = [
-  { 
-    id: 1, 
-    name: 'Las Vegas', 
-    country: 'United States',
-    image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop',
-    activities: 2847
-  },
-  { 
-    id: 2, 
-    name: 'Rome', 
-    country: 'Italy',
-    image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop',
-    activities: 1965
-  },
-  { 
-    id: 3, 
-    name: 'Paris', 
-    country: 'France',
-    image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop',
-    activities: 2134
-  },
-  { 
-    id: 4, 
-    name: 'London', 
-    country: 'United Kingdom',
-    image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&auto=format&fit=crop',
-    activities: 3156
-  },
-  { 
-    id: 5, 
-    name: 'New York City', 
-    country: 'United States',
-    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&auto=format&fit=crop',
-    activities: 3892
-  },
-  { 
-    id: 6, 
-    name: 'Washington DC', 
-    country: 'United States',
-    image: 'https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=800&auto=format&fit=crop',
-    activities: 1543
-  },
-  { 
-    id: 7, 
-    name: 'Cancun', 
-    country: 'Mexico',
-    image: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&auto=format&fit=crop',
-    activities: 987
-  },
-  { 
-    id: 8, 
-    name: 'Florence', 
-    country: 'Italy',
-    image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop',
-    activities: 1234
-  },
-  { 
-    id: 9, 
-    name: 'Barcelona', 
-    country: 'Spain',
-    image: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&auto=format&fit=crop',
-    activities: 1876
-  },
-  { 
-    id: 10, 
-    name: 'Oahu', 
-    country: 'United States',
-    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&auto=format&fit=crop',
-    activities: 765
-  },
+  { id: 1, name: 'Las Vegas', country: 'United States', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2847 },
+  { id: 2, name: 'Rome', country: 'Italy', image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop', activities: 1965 },
+  { id: 3, name: 'Paris', country: 'France', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop', activities: 2134 },
+  { id: 4, name: 'London', country: 'United Kingdom', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&auto=format&fit=crop', activities: 3156 },
+  { id: 5, name: 'New York City', country: 'United States', image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&auto=format&fit=crop', activities: 3892 },
+  { id: 6, name: 'Washington DC', country: 'United States', image: 'https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=800&auto=format&fit=crop', activities: 1543 },
+  { id: 7, name: 'Cancun', country: 'Mexico', image: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&auto=format&fit=crop', activities: 987 },
+  { id: 8, name: 'Florence', country: 'Italy', image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop', activities: 1234 },
+  { id: 9, name: 'Barcelona', country: 'Spain', image: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&auto=format&fit=crop', activities: 1876 },
+  { id: 10, name: 'Oahu', country: 'United States', image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&auto=format&fit=crop', activities: 765 },
 ];
 
 const TopDestinationView: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 lg:py-5 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#06336e] mb-4">
-            Where to next?
+    <section className="py-5 sm:py-7 md:py-8 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header — rapi, konsisten dengan section lain */}
+        <header className="text-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#193f77] mb-2 sm:mb-3">
+            Where to Next?
           </h2>
-          <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
-            Discover the most popular destinations around the world
+          <p className="text-[#6C757D] text-sm max-w-xl mx-auto leading-relaxed">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
           </p>
-        </div>
+        </header>
 
-        {/* Destinations Grid */}
-        <div className="relative">
+        {/* Destinations — grid desktop, horizontal scroll mobile/tablet */}
+        <div className="relative -mx-1 px-1">
           <div
             ref={scrollContainerRef}
-            className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
+            className="overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory py-1 scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            aria-label="Top destinations carousel"
           >
-            <div className="flex lg:grid lg:grid-cols-5 gap-5 md:gap-6 pb-4">
+            <div className="flex gap-4 sm:gap-5 md:gap-6 lg:grid lg:grid-cols-5 lg:gap-5 xl:gap-6 min-w-0">
               {destinations.map((destination) => (
                 <Link
                   key={destination.id}
                   href="/comingsoon"
-                  className="flex-shrink-0 w-[280px] sm:w-[300px] lg:w-auto snap-start group/card"
+                  className="shrink-0 w-[260px] sm:w-[280px] lg:w-auto snap-center snap-always group/card focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2C3892] focus-visible:ring-offset-2 rounded-2xl"
+                  aria-label={`Explore ${destination.name}, ${destination.country}`}
                 >
-                  <div className="relative h-64 sm:h-72 lg:h-64 xl:h-72 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-
-                    {/* Image */}
+                  <article className="relative h-56 sm:h-64 lg:h-60 xl:h-64 rounded-2xl overflow-hidden bg-gray-100 shadow-md hover:shadow-xl transition-shadow duration-300">
                     <Image
                       src={destination.image}
-                      alt={destination.name}
+                      alt=""
                       fill
-                      className="object-cover transition-transform duration-700 group-hover/card:scale-110"
-                      sizes="(max-width: 768px) 280px, (max-width: 1024px) 300px, 20vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover/card:scale-105"
+                      sizes="(max-width: 640px) 260px, (max-width: 1024px) 280px, 20vw"
                     />
-
-                    {/* Clean Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-                    {/* Content */}
-                    <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6">
-                      
-                      {/* City Name */}
-                      <h3 className="text-white font-bold text-2xl sm:text-3xl mb-2 drop-shadow-lg">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+                    <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-5">
+                      <h3 className="text-white font-bold text-xl sm:text-2xl mb-1 drop-shadow-md">
                         {destination.name}
                       </h3>
-
-                      {/* Country */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <FontAwesomeIcon icon={faMapMarkerAlt} className="w-3.5 h-3.5 text-white/90" />
-                        <span className="text-white/95 text-sm font-medium drop-shadow">
-                          {destination.country}
-                        </span>
-                      </div>
-
-                      {/* Activities Count */}
-                      <div className="text-white/90 text-sm font-medium drop-shadow">
+                      <p className="flex items-center gap-1.5 text-white/95 text-xs sm:text-sm font-medium drop-shadow mb-2">
+                        <FontAwesomeIcon icon={faMapMarkerAlt} className="w-3 h-3 shrink-0" aria-hidden />
+                        {destination.country}
+                      </p>
+                      <p className="text-white/90 text-xs sm:text-sm font-medium drop-shadow">
                         {destination.activities.toLocaleString()}+ things to do
-                      </div>
+                      </p>
                     </div>
-                  </div>
+                  </article>
                 </Link>
               ))}
             </div>
           </div>
         </div>
 
-        {/* View All Button */}
-        <div className="text-center mt-12 md:mt-16">
+        {/* CTA — rapi, konsisten spacing */}
+        <div className="text-center mt-10 sm:mt-12 md:mt-14">
           <Link
             href="/destinations"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#06336e] text-white font-semibold rounded-xl hover:bg-[#04274d] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 bg-[#2C3892] text-white font-semibold rounded-xl hover:bg-[#1e2870] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F68712] focus-visible:ring-offset-2 transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
-            <span>View All Destinations</span>
-            <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+            View All Destinations
+            <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4 shrink-0" aria-hidden />
           </Link>
         </div>
-
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };
