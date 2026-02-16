@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,7 +11,7 @@ import {
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
-
+import Image from 'next/image';
 // ── Hardcoded data (no AttractionCardComponent import) ──
 const BEST_DEALS = [
   {
@@ -157,7 +158,7 @@ export default function BestDealsView() {
               >
                 {/* Image — ukuran lebih besar */}
                 <div className="relative w-full aspect-[4/3] max-h-[180px] overflow-hidden shrink-0">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300"
